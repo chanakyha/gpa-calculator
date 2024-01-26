@@ -56,4 +56,12 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  h1 {
+    @apply font-bold text-lg md:text-xl lg:text-2xl;
+  }
+
+  .container-fix {
+    @apply p-4 md:p-16 xl:max-w-7xl xl:mx-auto;
+  }
 }
