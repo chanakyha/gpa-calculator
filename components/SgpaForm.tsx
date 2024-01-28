@@ -123,7 +123,11 @@ const SgpaForm = () => {
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
-                        <Input placeholder="Enter Credits" {...field} />
+                        <Input
+                          type="number"
+                          placeholder="Enter Credits"
+                          {...field}
+                        />
                       </FormControl>
 
                       <FormMessage />

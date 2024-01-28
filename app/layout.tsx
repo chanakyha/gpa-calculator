@@ -8,6 +8,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { headers } from "next/dist/client/components/headers";
 
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 const mont = Montserrat({ subsets: ["latin"] });
 
@@ -39,10 +40,14 @@ export default function RootLayout({
               >
                 <TabsList className="w-full md:max-w-4xl lg:max-w-2xl xl:max-w-xl mx-auto">
                   <TabsTrigger asChild className="w-full" value="sgpa">
-                    <Link href={"/"}>SGPA Calculator</Link>
+                    <Link className="w-full" href={"/"}>
+                      SGPA Calculator
+                    </Link>
                   </TabsTrigger>
                   <TabsTrigger asChild className="w-full" value="cgpa">
-                    <Link href={"/cgpa"}>CGPA Calculator</Link>
+                    <Link className="w-full" href={"/cgpa"}>
+                      CGPA Calculator
+                    </Link>
                   </TabsTrigger>
                 </TabsList>
                 {children}

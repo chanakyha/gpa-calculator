@@ -44,6 +44,13 @@ const CgpaForm = () => {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+
+    let result =
+      (Number(values.pastGpa.gpa) * Number(values.pastGpa.credits) +
+        Number(values.currentGpa.gpa) * Number(values.currentGpa.credits)) /
+      (Number(values.pastGpa.credits) + Number(values.currentGpa.credits));
+
+    setGpa(result);
   }
 
   return (
@@ -52,7 +59,7 @@ const CgpaForm = () => {
         <Alert className="shadow-md dark:shadow-white/10">
           <Terminal className="h-4 w-4" />
           <AlertTitle className="underline underline-offset-4 decoration-primary">
-            Your GPA is <span>{gpa.toFixed(3)}</span>
+            Your CGPA is <span>{gpa.toFixed(3)}</span>
           </AlertTitle>
           <AlertDescription className="mt-4">
             {getGpaMessage(gpa)}
@@ -147,6 +154,7 @@ const CgpaForm = () => {
       </Form>
       <Image
         src={"/images/cgpa.png"}
+        priority
         width={1920}
         height={1080}
         alt="cgpa-image"
