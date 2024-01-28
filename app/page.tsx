@@ -5,7 +5,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 export default function Home() {
   return (
-    <main className="container-fix">
+    <main className="container-fix min-h-[calc(100vh-3.5rem)]">
       <ThemeTogglerBtn className="fixed top-2 right-2" />
       <h1 className="text-center text-primary">SRM GPA CALCULATOR</h1>
       <div className="py-4 ">
