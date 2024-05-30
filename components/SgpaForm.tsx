@@ -24,7 +24,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { cn, getGpaMessage } from "@/lib/utils";
 import { Terminal } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const formSchema = z.object({
   gpa: z.array(
@@ -37,7 +37,7 @@ const formSchema = z.object({
 
 const SgpaForm = () => {
   const [gpa, setGpa] = useState<number>(0);
-
+  const alertRef = useRef<HTMLDivElement>(null);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -76,6 +76,10 @@ const SgpaForm = () => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
+    alertRef.current?.scrollIntoView({
+      behavior: "smooth",
+    });
+
     let points = 0;
     let sumCredit = 0;
 
@@ -94,7 +98,7 @@ const SgpaForm = () => {
   return (
     <div className="w-full flex flex-col gap-2 container-fix py-4">
       {gpa ? (
-        <Alert className="shadow-md dark:shadow-white/10">
+        <Alert ref={alertRef} className="shadow-md dark:shadow-white/10">
           <Terminal className="h-4 w-4" />
           <AlertTitle className="underline underline-offset-4 decoration-primary">
             Your GPA is <span>{gpa.toFixed(3)}</span>
