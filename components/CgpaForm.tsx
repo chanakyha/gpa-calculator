@@ -84,6 +84,20 @@ const CgpaForm = () => {
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
             <span className="font-bold ">Past CGPA</span>
+
+            <FormField
+              control={form.control}
+              name={`pastGpa.gpa`}
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input placeholder="Total CGPA" {...field} />
+                  </FormControl>
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name={`pastGpa.credits`}
@@ -101,20 +115,21 @@ const CgpaForm = () => {
                 </FormItem>
               )}
             />
+            <span className="font-bold ">Current GPA</span>
+
             <FormField
               control={form.control}
-              name={`pastGpa.gpa`}
+              name={`currentGpa.gpa`}
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Total CGPA" {...field} />
+                    <Input placeholder="Current Sem GPA" {...field} />
                   </FormControl>
 
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <span className="font-bold ">Current GPA</span>
             <FormField
               control={form.control}
               name={`currentGpa.credits`}
@@ -126,19 +141,6 @@ const CgpaForm = () => {
                       placeholder="Current Sem Total Credits"
                       {...field}
                     />
-                  </FormControl>
-
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name={`currentGpa.gpa`}
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input placeholder="Current Sem GPA" {...field} />
                   </FormControl>
 
                   <FormMessage />
