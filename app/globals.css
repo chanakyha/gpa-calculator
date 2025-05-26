@@ -5,47 +5,47 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --foreground: 160 30% 8%;
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 160 30% 8%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 142.1 76.2% 36.3%;
-    --primary-foreground: 355.7 100% 97.3%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --popover-foreground: 160 30% 8%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 138 25% 96%;
+    --secondary-foreground: 160 30% 8%;
+    --muted: 138 25% 96%;
+    --muted-foreground: 142 20% 45%;
+    --accent: 142 76% 36%;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 142.1 76.2% 36.3%;
+    --border: 142 30% 85%;
+    --input: 142 30% 85%;
+    --ring: 142 76% 36%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 0 0% 95%;
-    --card: 24 9.8% 10%;
-    --card-foreground: 0 0% 95%;
-    --popover: 0 0% 9%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 142.1 70.6% 45.3%;
-    --primary-foreground: 144.9 80.4% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 12 6.5% 15.1%;
-    --accent-foreground: 0 0% 98%;
+    --background: 160 30% 3%;
+    --foreground: 138 25% 95%;
+    --card: 160 30% 4%;
+    --card-foreground: 138 25% 95%;
+    --popover: 160 30% 4%;
+    --popover-foreground: 138 25% 95%;
+    --primary: 142 69% 58%;
+    --primary-foreground: 160 30% 8%;
+    --secondary: 160 20% 12%;
+    --secondary-foreground: 138 25% 95%;
+    --muted: 160 20% 12%;
+    --muted-foreground: 142 15% 65%;
+    --accent: 142 69% 58%;
+    --accent-foreground: 160 30% 8%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 85.7% 97.3%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 142.4 71.8% 29.2%;
+    --border: 160 20% 18%;
+    --input: 160 20% 18%;
+    --ring: 142 69% 58%;
   }
 }
 
@@ -54,14 +54,184 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
   }
 
   h1 {
-    @apply font-bold text-lg md:text-xl lg:text-2xl;
+    @apply font-semibold text-lg md:text-xl lg:text-2xl;
   }
 
   .container-fix {
-    @apply p-4 md:p-16 xl:max-w-7xl xl:mx-auto;
+    @apply p-4 md:p-8 xl:max-w-6xl xl:mx-auto;
   }
+}
+
+@layer components {
+  .formal-card {
+    @apply bg-background border border-border shadow-sm;
+  }
+
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Green gradient backgrounds for special elements */
+  .green-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(142 69% 45%) 100%
+    );
+  }
+
+  .green-gradient-subtle {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.1) 0%,
+      hsl(142 69% 45% / 0.05) 100%
+    );
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  /* Focus styles with green theme */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  /* Scrollbar styling with green theme */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/50;
+  }
+
+  /* Responsive text */
+  .text-responsive {
+    @apply text-sm sm:text-base md:text-lg;
+  }
+
+  /* Grid responsive */
+  .grid-responsive {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6;
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    .container {
+      @apply px-4;
+    }
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Professional form styling with green accents */
+  .form-section {
+    @apply p-6 border border-border bg-card rounded-lg;
+  }
+
+  /* Professional alert styling with green theme */
+  .result-alert {
+    @apply border-primary bg-primary/5 backdrop-blur-sm;
+  }
+
+  /* Green themed success states */
+  .success-state {
+    @apply bg-green-50 dark:bg-green-950/30 border-green-200 dark:border-green-800 text-green-800 dark:text-green-200;
+  }
+
+  /* Green themed hover effects */
+  .hover-green {
+    @apply hover:bg-primary/10 hover:border-primary/30 transition-all duration-200;
+  }
+
+  /* Green themed button variants */
+  .btn-green-outline {
+    @apply border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-primary-foreground transition-all duration-200;
+  }
+
+  .btn-green-ghost {
+    @apply text-primary bg-transparent hover:bg-primary/10 transition-all duration-200;
+  }
+}
+
+/* Additional green theme enhancements */
+.green-theme-enhancements {
+  /* Subtle green glow effects */
+  .glow-green {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.15);
+  }
+
+  /* Green themed gradients for cards */
+  .card-green-gradient {
+    background: linear-gradient(
+      145deg,
+      hsl(var(--card)) 0%,
+      hsl(var(--primary) / 0.02) 50%,
+      hsl(var(--card)) 100%
+    );
+  }
+
+  /* Green themed text highlights */
+  .text-highlight-green {
+    background: linear-gradient(
+      120deg,
+      hsl(var(--primary) / 0.2) 0%,
+      hsl(var(--primary) / 0.1) 100%
+    );
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+  }
+}
+
+/* Animation keyframes for green theme */
+@keyframes pulse-green {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px hsl(var(--primary) / 0);
+  }
+}
+
+@keyframes shimmer-green {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-pulse-green {
+  animation: pulse-green 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-shimmer-green {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    hsl(var(--primary) / 0.1),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer-green 2s ease-in-out infinite;
 }
